@@ -1,0 +1,48 @@
+esphome:
+  name: test_roku
+  friendly_name: test_roku
+
+esp32:
+  board: esp32dev
+  framework:
+    type: arduino
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: "p54XRs894F9ZSt4p75KvvJxM4sIlRzcFmbAc3mxL33Y="
+
+ota:
+  - platform: esphome
+    password: "41bfb1ddcd762b3d9db9a4f59b6a3a08"
+
+wifi:
+  output_power: 8.5
+  ssid: RocketScience
+  password: kerbalIsAwesome
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Tv-Rs232 Fallback Hotspot"
+    password: "bLHCubCMBDTM"
+
+captive_portal:
+
+# External component for Emulated Roku
+external_components:
+  - source:
+      type: local
+      path: components
+
+# Emulated Roku configuration
+emulated_roku:
+  device_name: "TV RS232 Roku"
+  port: 8060
+  on_key_press:
+    - lambda: |-
+        // type = "keypress", "keydown", or "keyup"
+        // key = the key name (e.g., "Power", "PowerOn", "PowerOff", "Home", etc.)
+        ESP_LOGI("roku_yaml", "Key event: %s -> %s", type.c_str(), key.c_str());
