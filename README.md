@@ -48,3 +48,10 @@ The `on_key_press` trigger provides two parameters:
 |-----------|------|-------------|
 | `type` | `std::string` | Event type: `keypress`, `keydown`, or `keyup` |
 | `key` | `std::string` | The key name (see Key Names below) |
+
+
+## Logitech Harmony setup
+
+Use Roku, model '4' as a device.
+
+Than, you can use buttons to send events to the esp32.
